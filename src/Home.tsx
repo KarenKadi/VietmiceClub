@@ -1,8 +1,16 @@
 import { useCallback, useEffect, useState } from "react";
 import * as anchor from "@project-serum/anchor";
+import image from "./assets/mice.png";
 
 import styled from "styled-components";
-import { Container, Snackbar } from "@mui/material";
+import {
+  Card,
+  CardActionArea,
+  CardContent,
+  CardMedia,
+  Container,
+  Snackbar,
+} from "@mui/material";
 import Paper from "@mui/material/Paper";
 import Alert from "@mui/lab/Alert";
 import Grid from "@mui/material/Grid";
@@ -37,7 +45,7 @@ const ConnectButton = styled(WalletDialogButton)`
   height: 60px;
   margin-top: 10px;
   margin-bottom: 5px;
-  background: linear-gradient(180deg, #604ae5 0%, #813eee 100%);
+  background-image: linear-gradient(to right bottom, #6bd180, #7fd57f, #92da7f, #a3de80, #b4e282, #b6e57f, #b8e97c, #baec79, #acf070, #9af369, #85f763, #68fb5f););
   color: white;
   font-size: 16px;
   font-weight: bold;
@@ -469,6 +477,7 @@ const Home = (props: HomeProps) => {
     <Container style={{ marginTop: 100 }}>
       <Container maxWidth="xs" style={{ position: "relative" }}>
         <Paper
+          elevation={3}
           style={{
             padding: 24,
             paddingBottom: 10,
@@ -476,9 +485,15 @@ const Home = (props: HomeProps) => {
             borderRadius: 6,
           }}
         >
+          <Card sx={{ maxWidth: 345 }}>
+            <CardActionArea>
+              <CardMedia component="img" image={image} />
+            </CardActionArea>
+          </Card>
           {!connected ? (
             <ConnectButton
               onClick={(e) => {
+                console.log("oli");
                 if (
                   wallet?.adapter.name === SolanaMobileWalletAdapterWalletName
                 ) {
@@ -627,14 +642,6 @@ const Home = (props: HomeProps) => {
               </MintContainer>
             </>
           )}
-          <Typography
-            variant="caption"
-            align="center"
-            display="block"
-            style={{ marginTop: 7, color: "grey" }}
-          >
-            Powered by METAPLEX
-          </Typography>
         </Paper>
       </Container>
 
