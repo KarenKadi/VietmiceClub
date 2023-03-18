@@ -6,7 +6,6 @@ import styled from "styled-components";
 import {
   Card,
   CardActionArea,
-  CardContent,
   CardMedia,
   Container,
   Snackbar,
@@ -489,7 +488,6 @@ const Home = (props: HomeProps) => {
             <CardActionArea>
               <CardMedia component="img" image={image} />
             </CardActionArea>
-          </Card>
           {!connected ? (
             <ConnectButton
               onClick={(e) => {
@@ -642,6 +640,7 @@ const Home = (props: HomeProps) => {
               </MintContainer>
             </>
           )}
+          </Card>
         </Paper>
       </Container>
 
